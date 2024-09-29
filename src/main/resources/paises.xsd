@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8"?> 
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://idat.pe/ws"
+		xmlns:tns="http://idat.pe/ws"
+		elementFormDefault="qualified">
+		
+	<element name="getPaisRequest">
+		<complexType>
+			<sequence>
+				<element name="nombre" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="getPaisesRequest">
+		<complexType>
+			<sequence>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="getPaisResponse">
+		<complexType>
+			<sequence>
+				<element name="pais" type="tns:pais"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="getPaisesResponse">
+		<complexType>
+			<sequence>
+				<element name="paises" type="tns:pais" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="pais">
+		<sequence>
+			<element name="nombre" type="string"></element>
+			<element name="poblacion" type="int"></element>
+			<element name="capital" type="string"></element>
+			<element name="moneda" type="tns:moneda"></element>
+		</sequence>
+	</complexType>
+	
+	<simpleType name="moneda">
+		<restriction base="string">
+			<enumeration value="Sol"></enumeration>
+			<enumeration value="Dolar"></enumeration>
+			<enumeration value="Bolivar"></enumeration>
+		</restriction>
+	</simpleType>
+</schema>
